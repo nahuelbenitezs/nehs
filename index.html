@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Nehs</title>
+    <link rel="stylesheet" href="main.css">
+  
+    <link rel="shortcut icon" type="image/x-icon" href="perfil.png">
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap" rel="stylesheet">
+		<script src="https://kit.fontawesome.com/228006f19a.js" crossorigin="anonymous"></script>
+
+    <style> 
+  
+
+  .content {
+      display: table;
+      width: 100%;
+      min-height: 100vh;
+      z-index: 1;
+      position: relative;
+  }
+
+  .content .inner {
+      display: table-cell;
+      vertical-align: middle;
+      text-align: center;
+      padding-left: 16px;
+      padding-right: 16px;
+  }
+
+  .content .inner h1,
+  .content .inner h2 {
+    color: white;
+    text-shadow: 0px 1px 3px rgba(0,0,0,0.5);
+  }
+
+  .content .inner h1 {
+    font-size: 62px;
+  }
+
+.video-background-controls button {
+
+font-size: 32px;
+display: inline-block;
+padding: 0px;
+margin: 0px;
+height: 32px;
+width: 32px;
+border-radius: 16px;
+line-height: 32px;
+border: none;
+background: none;
+-webkit-appearance: none;
+color: white;
+filter: drop-shadow(0px 0px 1px black);
+cursor: pointer;
+opacity: 1;
+transition: all 250ms ease-in-out;
+margin-left: 10px;
+}
+
+.video-background-controls button:hover {
+opacity: 0.5;
+}
+
+iframe {
+transition: opacity 500ms ease-in-out;
+transition-delay: 250ms;
+}</style>
+
+      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+      <script type="text/javascript" src="jquery.youtube-background.js?v=1.0.8"></script>
+
+  </head>
+  <body>
+
+    <section class="showcase" >
+
+      <div id="particles-js" ></div>
+      
+  <header>
+    
+    <h2 class="logo">Nehs</h2>
+
+    <div class="toggle"></div>
+
+    
+    
+  </header> 
+  <ul class="social">
+    
+    <li><a href="https://www.youtube.com/channel/UCSHHxPlpfCT11Hw6g7BN91w/featured"><img src="https://lh3.googleusercontent.com/KhY28aTw30hEJXooMF-_rQqwMIIqofFvasbZJtEpvlgHQwLXKP3KW0OoCTtoYpDNn_U=w128"></a></li>
+    <li><a href="https://www.twitch.tv/nehsff"><img src="https://img.icons8.com/nolan/2x/twitch.png"></a></li>
+    <li><a href="https://www.instagram.com/nehsff/"><img src="https://www.prodecoders.com/wp-content/uploads/instagram-logo-2016-01-128x128-1.png"></a></li>
+  </ul>
+  
+  <div class="overlay">
+    <div class="example-marquee">
+      <div id="ytbg3" data-ytbg-mute-button="true" data-ytbg-play-button="true" data-ytbg-resolution="4:3" data-ytbg-mobile="true" data-youtube="https://youtu.be/nmuRwepkCmk?list=PLXVimFwJkArUHZhh20i-Ddini_dOwDcy1"></div>
+      <div class="content">
+          <div class="inner">
+
+          </div>
+      </div>
+  </div>
+  </div>
+  <div class="text">  
+    <h2>Nehs</h2>
+
+      
+    
+  </div>
+  
+</section>
+
+
+<!-- JS Particles.js -->
+<script src="particles.min.js"></script>
+<script src="app.js"></script>
+
+<script>const menuToggle = document.querySelector('.toggle');
+  const showcase = document.querySelector('.showcase');
+  
+  menuToggle.addEventListener('click', () => {
+    menuToggle.classList.toggle('active');
+    showcase.classList.toggle('active');
+  })</script>
+
+
+<script type="text/javascript">
+  jQuery(document).ready(function() {
+    jQuery('[data-youtube], [data-vbg]').youtube_background();
+  });
+
+  document.querySelector('#ytbg2').addEventListener('video-background-pause', function(){
+    console.log(arguments);
+  });
+</script>
+
+
+
+  </body>
+</html>
