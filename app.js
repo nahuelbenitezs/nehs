@@ -35,3 +35,31 @@ if (typeof dialog.showModal === 'function' && location.protocol !== 'file:') {
     openedFrom.focus({ preventScroll: true });
   });
 }
+
+const stage = document.querySelector('.character-stage');
+const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+if (location.protocol !== 'file:') {
+  import('./scroll-reveal.js')
+    .then(({ mountScrollReveal }) => mountScrollReveal(motionPreference))
+    .catch(() => {});
+}
+
+if (stage && location.protocol !== 'file:') {
+  const loadCharacter = () => {
+    import('./character.js?v=3')
+      .then(({ mountCharacter }) => mountCharacter(stage, motionPreference))
+      .catch(() => stage.classList.remove('is-rendered'));
+  };
+
+  if ('IntersectionObserver' in window) {
+    const stageObserver = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) return;
+      stageObserver.disconnect();
+      loadCharacter();
+    }, { rootMargin: '160px' });
+    stageObserver.observe(stage);
+  } else {
+    loadCharacter();
+  }
+}

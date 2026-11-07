@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f5f4ef">
+  <meta name="theme-color" content="#080e17">
   <meta name="description" content="Nehs en Twitch. Montajes y jugadas de Valorant y Counter-Strike.">
   <title>Nehs — Directos y jugadas</title>
   <link rel="icon" type="image/png" href="perfil.png">
-  <link rel="stylesheet" href="main.css">
-  <script src="app.js" defer></script>
+  <link rel="stylesheet" href="main.css?v=3d-2">
+  <script src="app.js?v=3d-3" defer></script>
 </head>
 <body id="inicio">
   <svg class="icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -20,6 +20,9 @@
     </symbol>
     <symbol id="close" viewBox="0 0 24 24">
       <path d="m6 6 12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="down" viewBox="0 0 24 24">
+      <path d="M12 4v15m-6-6 6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
     </symbol>
   </svg>
 
@@ -35,8 +38,8 @@
     </nav>
   </header>
 
-  <main id="contenido" tabindex="-1">
-    <section class="shell introduction" aria-labelledby="nombre">
+  <main class="shell experience" id="contenido" tabindex="-1">
+    <section class="introduction" aria-labelledby="nombre">
       <h1 id="nombre">Nehs</h1>
       <div class="introduction-copy">
         <p>Hago directos en Twitch. Acá dejo mis jugadas de Valorant y Counter-Strike.</p>
@@ -46,63 +49,75 @@
       </div>
     </section>
 
-    <section class="shell videos" id="videos" aria-label="Videos">
-      <article class="featured">
-        <a class="feature-link" data-video href="https://www.youtube.com/watch?v=nmuRwepkCmk" target="_blank" rel="noopener noreferrer">
-          <div class="feature-poster">
-            <img src="assets/valorant-still.webp" alt="" width="1280" height="720" fetchpriority="high">
-            <span class="feature-play"><svg class="icon" aria-hidden="true"><use href="#play"/></svg> Ver montaje</span>
-          </div>
-          <div class="feature-caption">
-            <h2 class="video-name">Valorant montage plays 2k20</h2>
-            <span>Video destacado</span>
-          </div>
-        </a>
-      </article>
+    <div class="character-stage" aria-hidden="true">
+      <img class="character-poster" src="assets/character-poster.webp" alt="" width="780" height="974" fetchpriority="high">
+      <canvas id="character-canvas" aria-hidden="true"></canvas>
+    </div>
 
-      <div class="archive">
-        <div class="archive-heading">
-          <h2>Más videos</h2>
-          <a href="https://www.youtube.com/playlist?list=PLXVimFwJkArUHZhh20i-Ddini_dOwDcy1" target="_blank" rel="noopener noreferrer">
-            Ver playlist <svg class="icon" aria-hidden="true"><use href="#arrow"/></svg>
-          </a>
+    <a class="scroll-guide" href="#videos">
+      Bajá para ver los videos <svg class="icon" aria-hidden="true"><use href="#down"/></svg>
+    </a>
+
+    <article class="featured side-panel reveal" id="videos" aria-labelledby="featured-title">
+      <p class="section-label">Video destacado</p>
+      <a class="feature-link" data-video href="https://www.youtube.com/watch?v=nmuRwepkCmk" target="_blank" rel="noopener noreferrer">
+        <div class="feature-poster">
+          <img src="assets/valorant-still.webp" alt="" width="1280" height="720" loading="lazy">
+          <span class="feature-play"><svg class="icon" aria-hidden="true"><use href="#play"/></svg> Ver montaje</span>
         </div>
-        <ul class="video-list">
-          <li>
-            <a class="video-row" data-video href="https://www.youtube.com/watch?v=-zf-IPMUvP4" target="_blank" rel="noopener noreferrer">
-              <span class="row-poster"><img src="assets/csgo.webp" alt="" width="320" height="180" loading="lazy"></span>
-              <span class="row-copy">
-                <strong class="video-name">Directo de 1v1</strong>
-                <span>Montaje de CS:GO</span>
-              </span>
-              <span class="duration">3:11</span>
-              <svg class="icon row-play" aria-hidden="true"><use href="#play"/></svg>
-            </a>
-          </li>
-          <li>
-            <a class="video-row" data-video href="https://www.youtube.com/watch?v=YLxaViZQCns" target="_blank" rel="noopener noreferrer">
-              <span class="row-poster"><img src="assets/valorant-opening.webp" alt="" width="320" height="180" loading="lazy"></span>
-              <span class="row-copy">
-                <strong class="video-name">if valorant had an anime opening</strong>
-                <span>Edición de Valorant</span>
-              </span>
-              <span class="duration">1:34</span>
-              <svg class="icon row-play" aria-hidden="true"><use href="#play"/></svg>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </section>
-  </main>
+        <div class="feature-caption">
+          <h2 class="video-name" id="featured-title">Valorant montage plays 2k20</h2>
+        </div>
+      </a>
+    </article>
 
-  <footer id="redes" class="site-footer">
-    <div class="shell footer-inner">
-      <h2>Redes</h2>
+    <section class="archive side-panel reveal" aria-labelledby="archive-title">
+      <div class="archive-heading">
+        <h2 id="archive-title">Más videos</h2>
+        <a href="https://www.youtube.com/playlist?list=PLXVimFwJkArUHZhh20i-Ddini_dOwDcy1" target="_blank" rel="noopener noreferrer">
+          Ver playlist <svg class="icon" aria-hidden="true"><use href="#arrow"/></svg>
+        </a>
+      </div>
+      <ul class="video-list">
+        <li>
+          <a class="video-row" data-video href="https://www.youtube.com/watch?v=-zf-IPMUvP4" target="_blank" rel="noopener noreferrer">
+            <span class="row-poster"><img src="assets/csgo.webp" alt="" width="320" height="180" loading="lazy"></span>
+            <span class="row-copy">
+              <strong class="video-name">Directo de 1v1</strong>
+              <span>Montaje de CS:GO</span>
+            </span>
+            <span class="duration">3:11</span>
+            <svg class="icon row-play" aria-hidden="true"><use href="#play"/></svg>
+          </a>
+        </li>
+        <li>
+          <a class="video-row" data-video href="https://www.youtube.com/watch?v=YLxaViZQCns" target="_blank" rel="noopener noreferrer">
+            <span class="row-poster"><img src="assets/valorant-opening.webp" alt="" width="320" height="180" loading="lazy"></span>
+            <span class="row-copy">
+              <strong class="video-name">if valorant had an anime opening</strong>
+              <span>Edición de Valorant</span>
+            </span>
+            <span class="duration">1:34</span>
+            <svg class="icon row-play" aria-hidden="true"><use href="#play"/></svg>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <section class="networks side-panel reveal" id="redes" aria-labelledby="networks-title">
+      <h2 id="networks-title">Redes</h2>
       <ul class="social-links">
         <li><a href="https://www.twitch.tv/nehsff" target="_blank" rel="noopener noreferrer">Twitch <svg class="icon" aria-hidden="true"><use href="#arrow"/></svg></a></li>
         <li><a href="https://www.youtube.com/channel/UCSHHxPlpfCT11Hw6g7BN91w/featured" target="_blank" rel="noopener noreferrer">YouTube <svg class="icon" aria-hidden="true"><use href="#arrow"/></svg></a></li>
         <li><a href="https://www.instagram.com/nehsff/" target="_blank" rel="noopener noreferrer">Instagram <svg class="icon" aria-hidden="true"><use href="#arrow"/></svg></a></li>
       </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-inner">
+      <span>Nehs</span>
+      <a href="#inicio">Volver arriba</a>
     </div>
   </footer>
 
